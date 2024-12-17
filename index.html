@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Sederhana</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .calculator input {
+            width: 260px;
+            height: 40px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            text-align: right;
+            padding: 5px;
+        }
+
+        .calculator button {
+            width: 60px;
+            height: 60px;
+            font-size: 20px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .calculator button:hover {
+            background-color: #ddd;
+        }
+
+        .calculator button:active {
+            background-color: #bbb;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <input type="text" id="display" disabled>
+    <br>
+    <button onclick="clearDisplay()">C</button>
+    <button onclick="appendNumber('7')">7</button>
+    <button onclick="appendNumber('8')">8</button>
+    <button onclick="appendNumber('9')">9</button>
+    <button onclick="appendOperator('+')">+</button>
+    <br>
+    <button onclick="appendNumber('4')">4</button>
+    <button onclick="appendNumber('5')">5</button>
+    <button onclick="appendNumber('6')">6</button>
+    <button onclick="appendOperator('-')">-</button>
+    <br>
+    <button onclick="appendNumber('1')">1</button>
+    <button onclick="appendNumber('2')">2</button>
+    <button onclick="appendNumber('3')">3</button>
+    <button onclick="appendOperator('*')">*</button>
+    <br>
+    <button onclick="appendNumber('0')">0</button>
+    <button onclick="appendOperator('.')">.</button>
+    <button onclick="calculateResult()">=</button>
+    <button onclick="appendOperator('/')">/</button>
+</div>
+
+<script>
+    let currentInput = '';
+
+    // Menampilkan input ke layar
+    function updateDisplay() {
+        document.getElementById('display').value = currentInput;
+    }
+
+    // Menambahkan angka ke input
+    function appendNumber(number) {
+        currentInput += number;
+        updateDisplay();
+    }
+
+    // Menambahkan operator (+, -, *, /, .)
+    function appendOperator(operator) {
+        currentInput += operator;
+        updateDisplay();
+    }
+
+    // Menghapus semua input
+    function clearDisplay() {
+        currentInput = '';
+        updateDisplay();
+    }
+
+    // Menghitung hasil dari ekspresi
+    function calculateResult() {
+        try {
+            currentInput = eval(currentInput).toString();
+            updateDisplay();
+        } catch (e) {
+            currentInput = 'Error';
+            updateDisplay();
+        }
+    }
+</script>
+
+<a href="segitiga.html">Calculator segitiga</a>
+
+</body>
+</html>
